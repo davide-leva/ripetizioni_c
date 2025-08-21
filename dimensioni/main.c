@@ -10,6 +10,9 @@ int main() {
     int *puntatore = &intero;
     int vettore[6];
 
+    int *vet[100];
+    int **v;
+
     size_t dim_intero = sizeof (intero);
     size_t dim_carattere = sizeof (carattere);
     size_t dim_decimale = sizeof (decimale);
