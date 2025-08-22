@@ -1,17 +1,21 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #define MAX 100
 
 void es_lunghezza();
 void es_concatenazione();
+int inverti_stringa();
+void swap(char *a, char *b);
 
 int main() {
 
     es_lunghezza();
     es_concatenazione();
+    int res = inverti_stringa();
 
-    return 0;
+    return res;
 }
 
 void es_lunghezza() {
@@ -55,4 +59,39 @@ void es_concatenazione() {
     }
 
     printf("%s", str1);
+}
+
+int inverti_stringa() {
+    char *string, temp;
+    int n, len, i;
+
+    do {
+        printf("Inserire numero caratteri: ");
+        scanf("%d", &n);
+    } while( n <= 0);
+
+    n++;
+
+    string = malloc(n * sizeof(char));
+    if (string == NULL) {
+        printf("Errore di allocazione dinamica\n");
+        return 1;
+    }
+
+    printf("Inserisci stringa: ");
+    scanf("%s", string);
+
+
+    len = strlen(string);
+    for (i = 0; i<len/2; i++) {
+        swap(string+i, string+len-i-1);
+    }
+
+    printf("Invrtita: %s", string);
+}
+
+void swap(char *a, char *b) {
+    char temp = *a;
+    *a = *b;
+    *b = temp;
 }
